@@ -1,6 +1,6 @@
 <?php
 global $mysqli;
-include "connection.php";
+include "Connection.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $start_date = $_POST["startDate"];
@@ -50,21 +50,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style/index.css">
+    <link rel="stylesheet" type="text/css" href="../style/index.css">
     <title>Invoice Item Report</title>
 </head>
 <body>
-<?php //include "index.php"; ?>
-<h2>Invoice Item Report</h2>
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateInvoiceItemReport()">
-    <label for="startDate">Start Date:</label>
-    <input type="date" id="startDate" name="startDate" required><br><br>
+<?php include "index.php"; ?>
+<div class="invoice-report">
+    <h2>Invoice Item Report</h2>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
+          onsubmit="return validateInvoiceItemReport()">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required><br><br>
 
-    <label for="endDate">End Date:</label>
-    <input type="date" id="endDate" name="endDate" required><br><br>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required><br><br>
 
-    <input type="submit" value="Generate Report">
-</form>
+        <input type="submit" value="Generate Report">
+    </form>
+</div>
 
 <script>
     function validateInvoiceItemReport() {

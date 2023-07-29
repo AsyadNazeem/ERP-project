@@ -1,5 +1,5 @@
 <?php global $mysqli;
-include "connection.php"; ?>
+include "Connection.php"; ?>
 
 <?php
 // Check if the form is submitted
@@ -56,21 +56,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo "No invoices found.";
         }
     }
-        // Close the statement and connection
-        $stmt->close();
-        $mysqli->close();
+    // Close the statement and connection
+    $stmt->close();
+    $mysqli->close();
 
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="eng">
 <head>
     <title>Invoice Report</title>
-    <link rel="stylesheet" type="text/css" href="style/index.css">
+    <link rel="stylesheet" type="text/css" href="../style/index.css">
 </head>
 <body>
-<?php //include "index.php"; ?>
+<?php include "index.php"; ?>
 <h2>Invoice Report</h2>
 <?php
 // Display error message if there's any validation error or database error
@@ -78,15 +78,18 @@ if (isset($errorMessage)) {
     echo "<p class='error-message'>$errorMessage</p>";
 }
 ?>
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateInvoiceReport()">
-    <label for="startDate">Start Date:</label>
-    <input type="date" id="startDate" name="startDate" required><br><br>
+<div class="report">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
+          onsubmit="return validateInvoiceReport()">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required><br><br>
 
-    <label for="endDate">End Date:</label>
-    <input type="date" id="endDate" name="endDate" required><br><br>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required><br><br>
 
-    <input type="submit" value="Generate Report">
-</form>
+        <input type="submit" value="Generate Report">
+    </form>
+</div>
 
 <script>
     function validateInvoiceReport() {

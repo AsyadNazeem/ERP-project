@@ -1,5 +1,5 @@
 <?php global $mysqli;
-include "connection.php"; ?>
+include "Connection.php"; ?>
 
 <?php
 // Check if the form is submitted
@@ -16,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (empty($title) || empty($first_name) || empty($middle_name) || empty($last_name) || empty($contact_no) || empty($district)) {
         $errorMessage = "Please fill in all the required fields.";
     } else {
-        // Save the data into the database
         $sql = "INSERT INTO customer (title, first_name, middle_name, last_name, contact_no, district) VALUES ('$title','$first_name','$middle_name','$last_name','$contact_no','$district')";
         $result = mysqli_query($mysqli, $sql);
         $successMessage = "New record created successfully";
@@ -55,7 +54,7 @@ if ($result) {
 <html lang="eng">
 <head>
     <title>Customer Registration Form</title>
-    <link rel="stylesheet" type="text/css" href="style/index.css">
+    <link rel="stylesheet" type="text/css" href="../style/index.css">
 </head>
 <body>
 <?php include "index.php"; ?>

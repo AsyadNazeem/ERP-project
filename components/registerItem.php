@@ -1,10 +1,9 @@
 <?php global $mysqli;
-include "connection.php"; ?>
+include "Connection.php"; ?>
 
 <?php
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Get the form data
     $item_code = $_POST["item_code"];
     $item_category = $_POST["item_category"];
     $item_subcategory = $_POST["item_subcategory"];
@@ -16,14 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (empty($item_code) || empty($item_category) || empty($item_subcategory) || empty($item_name) || empty($quantity) || empty($unit_price)) {
         $errorMessage = "Please fill in all the required fields.";
     } else {
-        // Save the data into the database
         $sql = "INSERT INTO item (item_code, item_category, item_subcategory, item_name, quantity, unit_price) VALUES ('$item_code','$item_category','$item_subcategory','$item_name','$quantity','$unit_price')";
         $result = mysqli_query($mysqli, $sql);
         $successMessage = "New record created successfully";
     }
 
-} else {
-    echo "Error: " . mysqli_error($mysqli);
 }
 
 // Initialize an array to store the district options
@@ -77,11 +73,11 @@ if ($result) {
 <!DOCTYPE html>
 <html lang="eng">
 <head>
-    <link rel="stylesheet" type="text/css" href="style/index.css">
+    <link rel="stylesheet" type="text/css" href="../style/index.css">
     <title>Item Registration Form</title>
 </head>
 <body>
-<?php //include "index.php"; ?>
+<?php include "index.php"; ?>
 <h2>Item Registration Form</h2>
 <?php
 // Display success message if registration is successful
@@ -94,44 +90,45 @@ if (isset($errorMessage)) {
     echo "<p class='error-message'>$errorMessage</p>";
 }
 ?>
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
-    <label for="item_code">Item Code:</label>
-    <input type="text" id="item_code" name="item_code" required><br><br>
+<div class="register-item">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
+        <label for="item_code">Item Code:</label>
+        <input type="text" id="item_code" name="item_code" required><br><br>
 
-    <label for="item_name">Item Name:</label>
-    <input type="text" id="item_name" name="item_name" required><br><br>
+        <label for="item_name">Item Name:</label>
+        <input type="text" id="item_name" name="item_name" required><br><br>
 
-    <label for="item_category">Item Category:</label>
-    <select id="item_category" name="item_category" required>
-        <option value="" disabled selected>Select Item-Category</option>
-        <?php
-        // Loop through the districts array and generate the options
-        foreach ($item_categories as $id => $category) {
-            echo "<option value=\"$id\">$category</option>";
-        }
-        ?>
-    </select><br><br>
+        <label for="item_category">Item Category:</label>
+        <select id="item_category" name="item_category" required>
+            <option value="" disabled selected>Select Item-Category</option>
+            <?php
+            // Loop through the districts array and generate the options
+            foreach ($item_categories as $id => $category) {
+                echo "<option value=\"$id\">$category</option>";
+            }
+            ?>
+        </select><br><br>
 
-    <label for="item_subcategory">Item Sub Category:</label>
-    <select id="item_subcategory" name="item_subcategory" required>
-        <option value="" disabled selected>Select Item-Subcategory</option>
-        <?php
-        // Loop through the districts array and generate the options
-        foreach ($item_SubCategories as $id => $subcategory) {
-            echo "<option value=\"$id\">$subcategory</option>";
-        }
-        ?>
-    </select><br><br>
+        <label for="item_subcategory">Item Sub Category:</label>
+        <select id="item_subcategory" name="item_subcategory" required>
+            <option value="" disabled selected>Select Item-Subcategory</option>
+            <?php
+            // Loop through the districts array and generate the options
+            foreach ($item_SubCategories as $id => $subcategory) {
+                echo "<option value=\"$id\">$subcategory</option>";
+            }
+            ?>
+        </select><br><br>
 
-    <label for="quantity">Quantity:</label>
-    <input type="number" id="quantity" name="quantity" min="1" required><br><br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required><br><br>
 
-    <label for="unit_price">Unit Price:</label>
-    <input type="number" id="unit_price" name="unit_price" min="0" step="0.01" required><br><br>
+        <label for="unit_price">Unit Price:</label>
+        <input type="number" id="unit_price" name="unit_price" min="0" step="0.01" required><br><br>
 
-    <input type="submit" value="Submit">
-</form>
-
+        <input type="submit" value="Submit">
+    </form>
+</div>
 <script>
     function validateForm() {
         const itemCode = document.getElementById("itemCode").value;
