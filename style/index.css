@@ -1,0 +1,35 @@
+/* Style the sidebar */
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    padding-top: 20px;
+}
+
+/* Style the sidebar links */
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.sidebar a:hover {
+    background-color: #111;
+}
+
+/* Style the sub-menu */
+.sub-menu {
+    display: none;
+    background-color: #444;
+}
+
+/* Show the sub-menu on hover */
+.sidebar a:hover + .sub-menu,
+.sub-menu:hover {
+    display: block;
+}
