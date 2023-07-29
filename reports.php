@@ -2,8 +2,10 @@
 <html>
 <head>
     <title>Invoice Report</title>
+    <link rel="stylesheet" type="text/css" href="style/index.css">
 </head>
 <body>
+<?php //include "index.php"; ?>
 <h2>Invoice Report</h2>
 <form action="/generate_invoice_report" method="post" onsubmit="return validateInvoiceReport()">
     <label for="startDate">Start Date:</label>

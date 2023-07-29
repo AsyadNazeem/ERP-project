@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="eng">
 <head>
+    <link rel="stylesheet" type="text/css" href="style/index.css">
     <title>Item Registration Form</title>
 </head>
 <body>
+<?php //include "index.php"; ?>
 <h2>Item Registration Form</h2>
 <form action="/submit_item" method="post" onsubmit="return validateForm()">
     <label for="itemCode">Item Code:</label>

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="style/index.css">
     <title>Invoice Item Report</title>
 </head>
 <body>
+<?php //include "index.php"; ?>
 <h2>Invoice Item Report</h2>
 <form action="/generate_invoice_item_report" method="post" onsubmit="return validateInvoiceItemReport()">
     <label for="startDate">Start Date:</label>
