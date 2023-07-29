@@ -12,13 +12,14 @@
     <label for="endDate">End Date:</label>
     <input type="date" id="endDate" name="endDate" required><br><br>
 
+
     <input type="submit" value="Generate Report">
 </form>
 
 <script>
     function validateInvoiceItemReport() {
-        var startDate = document.getElementById("startDate").value;
-        var endDate = document.getElementById("endDate").value;
+        const startDate = document.getElementById("startDate").value;
+        const endDate = document.getElementById("endDate").value;
 
         // Check if both start date and end date are selected
         if (startDate === "" || endDate === "") {
