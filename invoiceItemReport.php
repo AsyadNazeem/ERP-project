@@ -48,13 +48,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="eng">
 <head>
-    <link rel="stylesheet" type="text/css" href="../style/index.css">
+    <link rel="stylesheet" type="text/css" href="style/index.css">
     <title>Invoice Item Report</title>
 </head>
 <body>
-<?php include "index.php"; ?>
+<?php include "sidebar.php"; ?>
 <div class="invoice-report">
     <h2>Invoice Item Report</h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"

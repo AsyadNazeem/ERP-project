@@ -1,3 +1,7 @@
+.background-image {
+    linear-gradient(to right top, #444c58, #007692, #00a4a2, #00cd7b, #a8eb12);
+}
+
 /* Style the sidebar */
 .sidebar {
     height: 100%;
@@ -22,7 +26,7 @@
     background-color: #111;
 }
 
-.active{
+.active {
     background-color: #111;
 }
 
@@ -38,27 +42,42 @@
     display: block;
 }
 
-.register-cux{
-    position: absolute;
+/* Hide dropdown menu by default */
+.sub-menu .dropdown-menu {
+    display: none;
+}
+
+/* Style the active link */
+.sub-menu .active {
+    background-color: #f1f1f1;
+}
+
+/* Style the dropdown toggle link */
+.sub-menu .dropdown-toggle {
+    cursor: pointer;
+}
+
+/* Show dropdown menu when it's open */
+.sub-menu.active .dropdown-menu {
+    display: block;
+}
+
+.register-cux {
     margin-left: 250px;
 }
 
-.register-item{
-    position: absolute;
+.register-item {
     margin-left: 250px;
 }
 
-.item-report{
-    position: absolute;
+.item-report {
     margin-left: 250px;
 }
 
-.invoice-report{
-    position: absolute;
+.invoice-report {
     margin-left: 250px;
 }
 
-.report{
-    position: absolute;
+.report {
     margin-left: 250px;
 }

@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
 }else{
-    echo "Error: " . mysqli_error($mysqli);
+    echo mysqli_error($mysqli);
 }
 
 // Initialize an array to store the district options
@@ -54,10 +54,10 @@ if ($result) {
 <html lang="eng">
 <head>
     <title>Customer Registration Form</title>
-    <link rel="stylesheet" type="text/css" href="../style/index.css">
+    <link rel="stylesheet" type="text/css" href="style/index.css">
 </head>
 <body>
-<?php include "index.php"; ?>
+<?php include "sidebar.php"; ?>
 <div class="register-cux">
     <h2>Customer Registration Form</h2>
     <?php
@@ -71,9 +71,9 @@ if ($result) {
         echo "<p class='error-message'>$errorMessage</p>";
     }
     ?>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
         <label for="title">Title:</label>
-        <select id="title" name="title" required>
+        <select id ="title" name="title" required>
             <option value="" disabled selected>Select Title</option>
             <option value="Mr">Mr</option>
             <option value="Mrs">Mrs</option>

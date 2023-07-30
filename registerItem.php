@@ -42,7 +42,7 @@ if ($result) {
     mysqli_free_result($result);
 } else {
     // Handle the query error if needed
-    echo "Error: " . mysqli_error($mysqli);
+    echo mysqli_error($mysqli);
 }
 
 $item_SubCategories = array();
@@ -64,7 +64,7 @@ if ($result) {
     mysqli_free_result($result);
 } else {
     // Handle the query error if needed
-    echo "Error: " . mysqli_error($mysqli);
+    echo mysqli_error($mysqli);
 }
 
 ?>
@@ -73,11 +73,11 @@ if ($result) {
 <!DOCTYPE html>
 <html lang="eng">
 <head>
-    <link rel="stylesheet" type="text/css" href="../style/index.css">
+    <link rel="stylesheet" type="text/css" href="style/index.css">
     <title>Item Registration Form</title>
 </head>
 <body>
-<?php include "index.php"; ?>
+<?php include "sidebar.php"; ?>
 <h2>Item Registration Form</h2>
 <?php
 // Display success message if registration is successful

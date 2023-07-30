@@ -1,5 +1,5 @@
 <?php global $mysqli;
-include "Connection.php"; ?>
+include "Connection.php";?>
 
 <?php
 // Check if the form is submitted
@@ -67,10 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="eng">
 <head>
     <title>Invoice Report</title>
-    <link rel="stylesheet" type="text/css" href="../style/index.css">
+    <link rel="stylesheet" type="text/css" href="style/index.css">
 </head>
 <body>
-<?php include "index.php"; ?>
+<?php include "sidebar.php"; ?>
 <h2>Invoice Report</h2>
 <?php
 // Display error message if there's any validation error or database error

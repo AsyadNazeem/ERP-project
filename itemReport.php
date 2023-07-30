@@ -36,11 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <!DOCTYPE html>
 <html lang="eng">
 <head>
-    <link rel="stylesheet" type="text/css" href="../style/index.css">
+    <link rel="stylesheet" type="text/css" href="style/index.css">
     <title>Item Report</title>
 </head>
 <body>
-<?php include "index.php"; ?>
+<?php include "sidebar.php"; ?>
 <div class="item-report">
     <h2>Item Report</h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
