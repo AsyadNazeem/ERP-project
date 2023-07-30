@@ -61,7 +61,7 @@ if ($result) {
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-<div class="container border rounded-3">
+<div class="container border rounded-3 bg-img">
     <!--    <div class="row">-->
     <!--        <div class="col-2">-->
     <?php include "sidebar.php"; ?>
@@ -86,7 +86,7 @@ if ($result) {
               onsubmit="return validateForm()">
             <div class="col-xl-12">
                 <label class="form-label" for="title">Title:</label><br>
-                <select class="form-select" id="title" name="title" required>
+                <select class="form-select shadow-sm p-2 mb-2 bg-white rounded" id="title" name="title" required>
                     <option value="" disabled selected>Select Title</option>
                     <option value="Mr">Mr</option>
                     <option value="Mrs">Mrs</option>
@@ -96,24 +96,24 @@ if ($result) {
             </div>
             <div class="col-xl-4 m-auto">
                 <label class="form-label" for="first_name">First Name</label><br>
-                <input class="form-control" type="text" id="first_name" name="first_name" required><br><br>
+                <input class="form-control shadow-sm p-2 mb-2 bg-white rounded" type="text" id="first_name" name="first_name" required><br><br>
             </div>
             <div class="col-xl-4 m-auto">
                 <label class="form-label" for="middle_name">Middle Name:</label><br>
-                <input class="form-control" type="text" id="middle_name" name="middle_name" required><br><br>
+                <input class="form-control shadow-sm p-2 mb-2 bg-white rounded" type="text" id="middle_name" name="middle_name" required><br><br>
             </div>
             <div class="col-xl-4 m-auto">
                 <label class="form-label" for="last_name">Last Name:</label><br>
-                <input class="form-control" type="text" id="last_name" name="last_name" required><br><br>
+                <input class="form-control shadow-sm p-2 mb-2 bg-white rounded" type="text" id="last_name" name="last_name" required><br><br>
             </div>
             <br>
             <div class="col-xl-6 margin">
                 <label class="form-label" for="contact_no">Contact Number:</label><br>
-                <input class="form-control" type="number" id="contact_no" name="contact_no" required><br><br>
+                <input class="form-control shadow-sm p-2 mb-2 bg-white rounded" type="number" id="contact_no" name="contact_no" required><br><br>
             </div>
             <div class="col-xl-6">
                 <label class="form-label" for="id">District:</label><br>
-                <select class="form-select" id="id" name="district" required>
+                <select class="form-select shadow-sm p-2 mb-2 bg-white rounded" id="id" name="district" required>
                     <option value="" disabled selected>Select District</option>
                     <?php
                     // Loop through the districts array and generate the options
@@ -123,8 +123,8 @@ if ($result) {
                     ?>
                 </select><br><br>
             </div>
-            <div class="pb-5">
-                <input class="btn btn-primary" type="submit" value="Submit">
+            <div class="pb-5 text-center">
+                <input class="btn btn-primary w-100 " type="submit" value="Submit">
             </div>
         </form>
     </section>

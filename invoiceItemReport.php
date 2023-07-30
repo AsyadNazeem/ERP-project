@@ -12,22 +12,22 @@ include "Connection.php";
     <title>Invoice Item Report</title>
 </head>
 <body>
-<div class="container border">
+<div class="container border rounded-3 bg-img">
     <?php include "sidebar.php"; ?>
     <div class="invoice-report">
         <h2 class="text-center display-6 heading">Invoice Item Report</h2>
-        <form class="row p-auto m-auto" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
+        <form class="row p-auto m-auto text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
               onsubmit="return validateInvoiceItemReport()">
             <div class="col-md-6 m-auto">
                 <label for="startDate">Start Date:</label>
-                <input type="date" id="startDate" name="startDate" required><br><br>
+                <input class="form-control shadow-sm p-2 mb-2 bg-white rounded" type="date" id="startDate" name="startDate" required><br><br>
             </div>
             <div class="col-md-6 m-auto">
                 <label for="endDate">End Date:</label>
-                <input type="date" id="endDate" name="endDate" required><br><br>
+                <input class="form-control shadow-sm p-2 mb-2 bg-white rounded" type="date" id="endDate" name="endDate" required><br><br>
             </div>
             <div>
-                <input class="btn btn-primary mb-4" type="submit" value="Generate Report">
+                <input class="btn btn-primary mb-4 w-100" type="submit" value="Generate Report">
             </div>
             <?php
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -38,10 +38,11 @@ include "Connection.php";
                     $errorMessage = "Please select both start and end dates.";
                 } else {
                     $sql = "SELECT i.invoice_no, i.date AS invoiced_date, c.first_name, c.middle_name ,c.last_name, 
-                it.item_name, it.item_code, it.item_category, it.unit_price
+                it.item_name, it.item_code, ic.category, it.unit_price
                 FROM invoice AS i
                 JOIN customer AS c ON i.id = c.id
                 JOIN item AS it ON c.id = it.id
+                JOIN item_category AS ic ON it.item_category = ic.id
                 WHERE i.date BETWEEN ? AND ?";
 
                     $stmt = $mysqli->prepare($sql);
@@ -51,6 +52,7 @@ include "Connection.php";
 
                     if ($result->num_rows > 0) {
                         echo "<h3 class='text-center display-6 heading'>Invoice Item Report for $start_date to $end_date</h3>";
+                        echo "<div class='table-responsive-sm'>";
                         echo "<table class='table table-borderless table-dark'>";
                         echo "<tr><th scope='col'>Invoice Number</th><th scope='col'>Invoiced Date</th><th scope='col'>Customer Name</th><th scope='col'>Item Code and Name</th><th scope='col'>Item Category</th><th scope='col'>Item Unit Price</th></tr>";
 
@@ -60,12 +62,13 @@ include "Connection.php";
                             echo "<td>" . $row["invoiced_date"] . "</td>";
                             echo "<td>" . $row["first_name"] . " " . $row["middle_name"] . " " . $row["last_name"] . "</td>";
                             echo "<td>" . $row["item_code"] . " " . $row["item_name"] . "</td>";
-                            echo "<td>" . $row["item_category"] . "</td>";
+                            echo "<td>" . $row["category"] . "</td>";
                             echo "<td>" . $row["unit_price"] . "</td>";
                             echo "</tr>";
                         }
 
                         echo "</table>";
+                        echo "</div>";
                     } else {
                         echo "No invoice items found for the selected date range.";
                     }

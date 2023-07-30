@@ -11,7 +11,7 @@ include "Connection.php"; ?>
     <link rel="stylesheet" type="text/css" href="style/index.css">
 </head>
 <body>
-<div class="container border">
+<div class="container border rounded-3 bg-img">
     <?php include "sidebar.php"; ?>
     <h2 class="text-center display-6 heading">Invoice Report</h2>
     <?php
@@ -20,18 +20,18 @@ include "Connection.php"; ?>
         echo "<p class='error-message'>$errorMessage</p>";
     }
     ?>
-    <form class="row p-auto m-auto" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
+    <form class="row p-auto m-auto text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
           onsubmit="return validateInvoiceReport()">
         <div class="col-md-6 m-auto">
             <label for="startDate">Start Date:</label>
-            <input type="date" id="startDate" name="startDate" required><br><br>
+            <input class="form-control shadow-sm p-2 mb-2 bg-white rounded" type="date" id="startDate" name="startDate" required><br><br>
         </div>
         <div class="col-md-6 m-auto">
             <label for="endDate">End Date:</label>
-            <input type="date" id="endDate" name="endDate" required><br><br>
+            <input class="form-control shadow-sm p-2 mb-2 bg-white rounded" type="date" id="endDate" name="endDate" required><br><br>
         </div>
         <div>
-            <input class="btn btn-primary mb-4" type="submit" value="Generate Report">
+            <input class="btn btn-primary mb-4 w-100 " type="submit" value="Generate Report">
         </div>
         <?php
         // Check if the form is submitted
@@ -45,9 +45,11 @@ include "Connection.php"; ?>
                 $errorMessage = "Please select both start and end dates.";
             } else {
                 // Prepare the SQL query to retrieve invoices within the specified date range
-                $sql = "SELECT i.invoice_no ,i.date, c.first_name, c.middle_name, c.last_name, c.district, i.item_count, i.amount 
+                $sql = "SELECT i.invoice_no ,i.date, c.first_name, c.middle_name, c.last_name, 
+                d.district, i.item_count, i.amount 
                 FROM invoice AS i 
                 JOIN customer AS c ON i.id = c.id 
+                JOIN district AS d ON c.district = d.id
                 WHERE i.date BETWEEN ? AND ?";
 
                 // Prepare the statement
@@ -67,6 +69,7 @@ include "Connection.php"; ?>
                 if ($result->num_rows > 0) {
                     // Display the invoice report table
                     echo "<h3 class='text-center display-6 heading'>Invoice Report for $start_date to $end_date</h3>";
+                    echo "<div class='table-responsive-sm'>";
                     echo "<table class='table table-borderless table-dark' >";
                     echo "<tr><th scope='col'>Invoice Number</th><th scope='col'>Current Date</th><th scope='col'>Invoiced Date</th><th scope='col'>Customer</th><th scope='col'>Customer District</th><th scope='col'>Item Count</th><th scope='col'>Amount</th></tr>";
 
@@ -83,6 +86,7 @@ include "Connection.php"; ?>
                         echo "</tr>";
                     }
                     echo "</table>";
+                    echo "</div>";
                 } else {
                     // If no rows were returned display a message
                     echo "No invoices found.";

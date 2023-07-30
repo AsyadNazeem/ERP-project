@@ -84,7 +84,7 @@ if ($result) {
             crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container border">
+<div class="container border rounded-3 bg-img">
 <!--    <div class="col-2">-->
         <?php include "sidebar.php"; ?>
         <h2 class="text-center display-6 heading">Item Registration Form</h2>
@@ -104,15 +104,15 @@ if ($result) {
                   onsubmit="return validateForm()">
                 <div class="col-md-3">
                     <label class="form-label" for="item_code">Item Code:</label>
-                    <input class="form-control" type="text" id="item_code" name="item_code" required><br><br>
+                    <input class="form-control shadow-sm p-2 mb-1 bg-white rounded" type="text" id="item_code" name="item_code" required><br><br>
                 </div>
                 <div class="col-md-9">
                     <label class="form-label" for="item_name">Item Name:</label>
-                    <input class="form-control" type="text" id="item_name" name="item_name" required><br><br>
+                    <input class="form-control shadow-sm p-2 mb-1 bg-white rounded" type="text" id="item_name" name="item_name" required><br><br>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label" for="item_category">Item Category:</label>
-                    <select class="form-select" id="item_category" name="item_category" required>
+                    <select class="form-select shadow-sm p-2 mb-1 bg-white rounded" id="item_category" name="item_category" required>
                         <option value="" disabled selected>Select Item-Category</option>
                         <?php
                         // Loop through the districts array and generate the options
@@ -124,7 +124,7 @@ if ($result) {
                 </div>
                 <div class="col-md-6">
                     <label class="form-label" for="item_subcategory">Item Sub Category:</label>
-                    <select class="form-select" id="item_subcategory" name="item_subcategory" required>
+                    <select class="form-select shadow-sm p-2 mb-1 bg-white rounded" id="item_subcategory" name="item_subcategory" required>
                         <option value="" disabled selected>Select Item-Subcategory</option>
                         <?php
                         // Loop through the districts array and generate the options
@@ -136,15 +136,15 @@ if ($result) {
                 </div>
                 <div class="col-md-5">
                     <label class="form-label" for="quantity">Quantity:</label>
-                    <input class="form-control" type="number" id="quantity" name="quantity" min="1" required><br><br>
+                    <input class="form-control shadow-sm p-2 mb-1 bg-white rounded" type="number" id="quantity" name="quantity" min="1" required><br><br>
                 </div>
                 <div class="col-md-7">
                     <label class="form-label" for="unit_price">Unit Price:</label>
-                    <input class="form-control" type="number" id="unit_price" name="unit_price" min="0" step="0.01"
+                    <input class="form-control shadow-sm p-2 mb-1 bg-white rounded" type="number" id="unit_price" name="unit_price" min="0" step="0.01"
                            required><br><br>
                 </div>
                 <div>
-                    <input class="btn btn-primary mb-4" type="submit" value="Submit">
+                    <input class="btn btn-primary mb-4 w-100" type="submit" value="Submit">
                 </div>
             </form>
         </section>
