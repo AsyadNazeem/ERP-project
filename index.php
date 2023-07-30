@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $successMessage = "New record created successfully";
     }
 
-}else{
+} else {
     echo mysqli_error($mysqli);
 }
 
@@ -53,13 +53,23 @@ if ($result) {
 <!DOCTYPE html>
 <html lang="eng">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Customer Registration Form</title>
     <link rel="stylesheet" type="text/css" href="style/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-<?php include "sidebar.php"; ?>
-<div class="register-cux">
-    <h2>Customer Registration Form</h2>
+<div class="container border rounded-3">
+    <!--    <div class="row">-->
+    <!--        <div class="col-2">-->
+    <?php include "sidebar.php"; ?>
+    <!--        </div>-->
+
+
+    <!--        <div class="col-9">-->
+    <h2 class="text-center display-6 heading">Customer Registration Form</h2>
     <?php
     // Display success message if registration is successful
     if (isset($successMessage)) {
@@ -71,43 +81,59 @@ if ($result) {
         echo "<p class='error-message'>$errorMessage</p>";
     }
     ?>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
-        <label for="title">Title:</label>
-        <select id ="title" name="title" required>
-            <option value="" disabled selected>Select Title</option>
-            <option value="Mr">Mr</option>
-            <option value="Mrs">Mrs</option>
-            <option value="Miss">Miss</option>
-            <option value="Dr">Dr</option>
-        </select><br><br>
-
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" required><br><br>
-
-        <label for="middle_name">Middle Name:</label>
-        <input type="text" id="middle_name" name="middle_name" required><br><br>
-
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" required><br><br>
-
-        <label for="contact_no">Contact Number:</label>
-        <input type="number" id="contact_no" name="contact_no" required><br><br>
-
-        <label for="id">District:</label>
-        <select id="id" name="district" required>
-            <option value="" disabled selected>Select District</option>
-            <?php
-            // Loop through the districts array and generate the options
-            foreach ($districts as $id => $district) {
-                echo "<option value=\"$id\">$district</option>";
-            }
-            ?>
-        </select><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
+    <section class="container">
+        <form class="row g-3" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
+              onsubmit="return validateForm()">
+            <div class="col-xl-12">
+                <label class="form-label" for="title">Title:</label><br>
+                <select class="form-select" id="title" name="title" required>
+                    <option value="" disabled selected>Select Title</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Dr">Dr</option>
+                </select><br><br>
+            </div>
+            <div class="col-xl-4 m-auto">
+                <label class="form-label" for="first_name">First Name</label><br>
+                <input class="form-control" type="text" id="first_name" name="first_name" required><br><br>
+            </div>
+            <div class="col-xl-4 m-auto">
+                <label class="form-label" for="middle_name">Middle Name:</label><br>
+                <input class="form-control" type="text" id="middle_name" name="middle_name" required><br><br>
+            </div>
+            <div class="col-xl-4 m-auto">
+                <label class="form-label" for="last_name">Last Name:</label><br>
+                <input class="form-control" type="text" id="last_name" name="last_name" required><br><br>
+            </div>
+            <br>
+            <div class="col-xl-6 margin">
+                <label class="form-label" for="contact_no">Contact Number:</label><br>
+                <input class="form-control" type="number" id="contact_no" name="contact_no" required><br><br>
+            </div>
+            <div class="col-xl-6">
+                <label class="form-label" for="id">District:</label><br>
+                <select class="form-select" id="id" name="district" required>
+                    <option value="" disabled selected>Select District</option>
+                    <?php
+                    // Loop through the districts array and generate the options
+                    foreach ($districts as $id => $district) {
+                        echo "<option value=\"$id\">$district</option>";
+                    }
+                    ?>
+                </select><br><br>
+            </div>
+            <div class="pb-5">
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+        </form>
+    </section>
 </div>
-
+<!--    </div>-->
+<!--</div>-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 <script>
     function validateForm() {
         const title = document.getElementById("title").value;

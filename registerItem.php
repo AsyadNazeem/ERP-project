@@ -73,61 +73,82 @@ if ($result) {
 <!DOCTYPE html>
 <html lang="eng">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style/index.css">
     <title>Item Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
 </head>
 <body>
-<?php include "sidebar.php"; ?>
-<h2>Item Registration Form</h2>
-<?php
-// Display success message if registration is successful
-if (isset($successMessage)) {
-    echo "<p class='success-message'>$successMessage</p>";
-}
+<div class="container border">
+<!--    <div class="col-2">-->
+        <?php include "sidebar.php"; ?>
+        <h2 class="text-center display-6 heading">Item Registration Form</h2>
+        <?php
+        // Display success message if registration is successful
+        if (isset($successMessage)) {
+            echo "<p class='success-message'>$successMessage</p>";
+        }
 
-// Display error message if there's any validation error or database error
-if (isset($errorMessage)) {
-    echo "<p class='error-message'>$errorMessage</p>";
-}
-?>
-<div class="register-item">
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
-        <label for="item_code">Item Code:</label>
-        <input type="text" id="item_code" name="item_code" required><br><br>
-
-        <label for="item_name">Item Name:</label>
-        <input type="text" id="item_name" name="item_name" required><br><br>
-
-        <label for="item_category">Item Category:</label>
-        <select id="item_category" name="item_category" required>
-            <option value="" disabled selected>Select Item-Category</option>
-            <?php
-            // Loop through the districts array and generate the options
-            foreach ($item_categories as $id => $category) {
-                echo "<option value=\"$id\">$category</option>";
-            }
-            ?>
-        </select><br><br>
-
-        <label for="item_subcategory">Item Sub Category:</label>
-        <select id="item_subcategory" name="item_subcategory" required>
-            <option value="" disabled selected>Select Item-Subcategory</option>
-            <?php
-            // Loop through the districts array and generate the options
-            foreach ($item_SubCategories as $id => $subcategory) {
-                echo "<option value=\"$id\">$subcategory</option>";
-            }
-            ?>
-        </select><br><br>
-
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" required><br><br>
-
-        <label for="unit_price">Unit Price:</label>
-        <input type="number" id="unit_price" name="unit_price" min="0" step="0.01" required><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
+        // Display error message if there's any validation error or database error
+        if (isset($errorMessage)) {
+            echo "<p class='error-message'>$errorMessage</p>";
+        }
+        ?>
+        <section class="container">
+            <form class="row g-3" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
+                  onsubmit="return validateForm()">
+                <div class="col-md-3">
+                    <label class="form-label" for="item_code">Item Code:</label>
+                    <input class="form-control" type="text" id="item_code" name="item_code" required><br><br>
+                </div>
+                <div class="col-md-9">
+                    <label class="form-label" for="item_name">Item Name:</label>
+                    <input class="form-control" type="text" id="item_name" name="item_name" required><br><br>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="item_category">Item Category:</label>
+                    <select class="form-select" id="item_category" name="item_category" required>
+                        <option value="" disabled selected>Select Item-Category</option>
+                        <?php
+                        // Loop through the districts array and generate the options
+                        foreach ($item_categories as $id => $category) {
+                            echo "<option value=\"$id\">$category</option>";
+                        }
+                        ?>
+                    </select><br><br>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="item_subcategory">Item Sub Category:</label>
+                    <select class="form-select" id="item_subcategory" name="item_subcategory" required>
+                        <option value="" disabled selected>Select Item-Subcategory</option>
+                        <?php
+                        // Loop through the districts array and generate the options
+                        foreach ($item_SubCategories as $id => $subcategory) {
+                            echo "<option value=\"$id\">$subcategory</option>";
+                        }
+                        ?>
+                    </select><br><br>
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label" for="quantity">Quantity:</label>
+                    <input class="form-control" type="number" id="quantity" name="quantity" min="1" required><br><br>
+                </div>
+                <div class="col-md-7">
+                    <label class="form-label" for="unit_price">Unit Price:</label>
+                    <input class="form-control" type="number" id="unit_price" name="unit_price" min="0" step="0.01"
+                           required><br><br>
+                </div>
+                <div>
+                    <input class="btn btn-primary mb-4" type="submit" value="Submit">
+                </div>
+            </form>
+        </section>
+<!--    </div>-->
 </div>
 <script>
     function validateForm() {

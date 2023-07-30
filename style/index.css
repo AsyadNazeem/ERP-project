@@ -1,83 +1,73 @@
-.background-image {
-    linear-gradient(to right top, #444c58, #007692, #00a4a2, #00cd7b, #a8eb12);
+/*.background-image {*/
+/*    linear-gradient(to right top, #444c58, #007692, #00a4a2, #00cd7b, #a8eb12);*/
+/*}*/
+
+/*!* Style the sidebar *!*/
+/*.sidebar {*/
+/*    height: 100%;*/
+/*    width: 200px;*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    background-color: #333;*/
+/*    padding-top: 20px;*/
+/*}*/
+
+/*!* Style the sidebar links *!*/
+/*.sidebar a {*/
+/*    display: block;*/
+/*    color: white;*/
+/*    padding: 16px;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*!* Change color on hover *!*/
+/*.sidebar a:hover {*/
+/*    background-color: #111;*/
+/*}*/
+
+/*.active {*/
+/*    background-color: #111;*/
+/*}*/
+
+/*!* Style the sub-menu *!*/
+/*.sub-menu {*/
+/*    display: none;*/
+/*    background-color: #444;*/
+/*}*/
+
+/*!* Show the sub-menu on hover *!*/
+/*.sidebar a:hover + .sub-menu,*/
+/*.sub-menu:hover {*/
+/*    display: block;*/
+/*}*/
+
+/*!* Hide dropdown menu by default *!*/
+/*.sub-menu .dropdown-menu {*/
+/*    display: none;*/
+/*}*/
+
+/*!* Style the active link *!*/
+/*.sub-menu .active {*/
+/*    background-color: #f1f1f1;*/
+/*}*/
+
+/*!* Style the dropdown toggle link *!*/
+/*.sub-menu .dropdown-toggle {*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*!* Show dropdown menu when it's open *!*/
+/*.sub-menu.active .dropdown-menu {*/
+/*    display: block;*/
+/*}*/
+
+.row {
+    border-style: none;
 }
 
-/* Style the sidebar */
-.sidebar {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #333;
-    padding-top: 20px;
+.heading {
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
-/* Style the sidebar links */
-.sidebar a {
-    display: block;
-    color: white;
-    padding: 16px;
-    text-decoration: none;
-}
-
-/* Change color on hover */
-.sidebar a:hover {
-    background-color: #111;
-}
-
-.active {
-    background-color: #111;
-}
-
-/* Style the sub-menu */
-.sub-menu {
-    display: none;
-    background-color: #444;
-}
-
-/* Show the sub-menu on hover */
-.sidebar a:hover + .sub-menu,
-.sub-menu:hover {
-    display: block;
-}
-
-/* Hide dropdown menu by default */
-.sub-menu .dropdown-menu {
-    display: none;
-}
-
-/* Style the active link */
-.sub-menu .active {
-    background-color: #f1f1f1;
-}
-
-/* Style the dropdown toggle link */
-.sub-menu .dropdown-toggle {
-    cursor: pointer;
-}
-
-/* Show dropdown menu when it's open */
-.sub-menu.active .dropdown-menu {
-    display: block;
-}
-
-.register-cux {
-    margin-left: 250px;
-}
-
-.register-item {
-    margin-left: 250px;
-}
-
-.item-report {
-    margin-left: 250px;
-}
-
-.invoice-report {
-    margin-left: 250px;
-}
-
-.report {
-    margin-left: 250px;
-}
